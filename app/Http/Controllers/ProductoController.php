@@ -26,13 +26,7 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        //Seleccionar Marcas
-        $marcas =Marca::all();
-        //Seleccionar Categorias
-        $categorias =Categorias::all();
-        return view("productos.new")
-        ->with('categorias', $categorias)
-        ->with('categorias', $categorias);
+        echo "Hola";
     }
 
     /**
@@ -43,7 +37,19 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $archivo = $request->imagen;
+       $nombre_archivo = $archivo->getClientOriginalName();
+       
+       $ruta = public_path();
+       $archivo->move("$ruta/img", $nombre_archivo);
+       $producto = new Producto;
+       $producto->nombre = $request->nombre;
+       $producto->descripcion = $request->desc;
+       $producto->precio = $request->precio;
+       $producto->imagen = $nombre_archivo;
+
+
+
     }
 
     /**

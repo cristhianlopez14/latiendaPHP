@@ -22,6 +22,12 @@
   <div class="container">
       @yield('contenido')
   </div>
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('select');
+      var instances = M.FormSelect.init(elems, []);
+      });
+  </script>
 
 <script src="{{asset('materialize/js/materialize.js') }}"> </script>
 

@@ -1,11 +1,14 @@
 @extends('layouts.menu')
 
 @section('contenido')
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <div class="row">
     <h1 class="brown-text text-darken-4">Nuevo Producto</h1>
 </div>
 <div class="row">
-    <form action="" class="col s8" method="POST">
+    <form action="{{ route('productos.store')}}" class="col s8" method="POST" enctype="multipart/form-data">
+        @csrf
         <div class="row">
             <div class="col s8 input-field">
                 <input  type="text" id="nombre" name="nombre" placeholder="Nombre Producto" />
@@ -34,6 +37,23 @@
                 <input type="text" class="file-path">
             </div>
             </div>
+        </div>
+
+        <div class="row">
+            <div class="col s8 input-field">
+                <select name="marca" id="marca">
+                    @foreach($marcas as $marca)
+                    <option >{{ $marca->nombre }}</option>
+                    @endforeach
+                </select>
+                <label>Selecione Marca</label>
+            </div>
+        </div>
+        <div class="row"></div>
+        <div class="row">
+            <button class="btn waves-effect waves-light" type="submit" >Guardar Producto
+            <i class="material-icons right">send</i>
+             </button>
         </div>
     </form>
 </div>
