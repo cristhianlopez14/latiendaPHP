@@ -26,7 +26,14 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        echo "Hola";
+        //Seleccionar Marcas
+        $marcas =Marca::all();
+        //Seleccionar Categorias
+        $categorias =Categoria::all();
+        //las enviamos a la vista
+        return view("productos.new")
+        ->with('marcas', $marcas)
+        ->with('categorias', $categorias);
     }
 
     /**
@@ -47,6 +54,10 @@ class ProductoController extends Controller
        $producto->descripcion = $request->desc;
        $producto->precio = $request->precio;
        $producto->imagen = $nombre_archivo;
+       $producto->marca_id = $request->marca;
+       $producto->categoria_id = $request->categoria;
+       $producto->save();
+       echo "Producto Registrado";
 
 
 

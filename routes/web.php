@@ -100,11 +100,7 @@ Route:: get('paises', function(){
         ->with("paises", $paises );
 });
 
-Route:: get('producto/create', function(){
-    return view('productos.new');
-} 
-);
+
 
 Route::resource('productos', ProductoController::class);
 
-?>

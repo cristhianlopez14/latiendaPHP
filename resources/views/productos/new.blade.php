@@ -43,13 +43,22 @@
             <div class="col s8 input-field">
                 <select name="marca" id="marca">
                     @foreach($marcas as $marca)
-                    <option >{{ $marca->nombre }}</option>
+                    <option value="{{$marca->id}}">{{ $marca->nombre }}</option>
                     @endforeach
                 </select>
                 <label>Selecione Marca</label>
             </div>
         </div>
-        <div class="row"></div>
+        <div class="row">
+        <div class="col s8 input-field">
+                <select name="categoria" id="categoria">
+                     @foreach($categorias as $categoria)
+                    <option value="{{$categoria->id}}" >{{ $categoria->nombre }}</option>
+                    @endforeach
+                </select>
+                <label>Selecione Categoria</label>
+                </div>
+        </div>
         <div class="row">
             <button class="btn waves-effect waves-light" type="submit" >Guardar Producto
             <i class="material-icons right">send</i>
